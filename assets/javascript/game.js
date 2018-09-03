@@ -1,9 +1,9 @@
 (function () {
     var game = {
-        wordSource: ["Clown", "Elephant", "Tigers", "Acrobats", "Contortionist",
+        wordSource: ["Clowns", "Elephant", "Tigers", "Acrobats", "Contortionist",
             "Ballons", "Popcorn", "Juggler",
             "Trapeze", "Ringmaster", "Strongman",
-            "Zebras", "Horses"],
+            "Zebras", "Horses","Tents"],
         lettersGuessedSpan: "",
         winsCounter: document.getElementById("wins"),
         missedLettersCounter: document.getElementById("num-guesses"),
@@ -85,14 +85,21 @@
                     }
                 }
                 else {
-                    this.missedLetters--;
-                    this.missedLettersCounter.textContent = this.missedLetters;
-                    this.wrongGuessLetters.push(letterChoice);
-                    this.lettersGuessedSpan.appendChild(document.createTextNode(letterChoice + " "));
-                    document.getElementById("letter-guessed").appendChild(this.lettersGuessedSpan);
+                    
+                    if (this.wrongGuessLetters.indexOf(letterChoice) === -1) {
+                        this.missedLetters--;
+                        this.missedLettersCounter.textContent = this.missedLetters;
+                        this.wrongGuessLetters.push(letterChoice);
+                        this.lettersGuessedSpan.appendChild(document.createTextNode(letterChoice + " "));
+                        document.getElementById("letter-guessed").appendChild(this.lettersGuessedSpan);
+                    }
+
                 }
                 if (this.initialContent.includes("_") === false) {
                     this.winAudio.play();
+                    var imageValue = this.wordSource.indexOf(this.wordGuessed);
+                    document.getElementById("image-win").src = ("assets/images/image_" + imageValue +".jpeg");
+
                 }
                 else if (this.missedLetters === 0) {
                     this.loseAudio.play();
@@ -104,6 +111,7 @@
                 this.winsValue = this.winsValue + 1;
                 this.winsCounter.textContent = this.winsValue;
                 alert("You Win!!!!! \n\nPress Ok to play again");
+                document.getElementById("image-win").src = ("assets/images/Circusimage_1.jpg");
                 this.winAudio.pause();
                 this.winAudio.load();
                 this.computerGuess();
