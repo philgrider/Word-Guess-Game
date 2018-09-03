@@ -76,10 +76,10 @@
                         if (letterChoice === this.tempWordGuessed[i] && i === 0) {
                             this.tempLetterUpper = letterChoice.toUpperCase();
                             this.initialContent[i] = letterChoice.toUpperCase();
-                            document.getElementById(i).innerHTML = this.tempLetterUpper;
+                            document.getElementById(i).innerHTML = this.tempLetterUpper + " ";
                         }
                         else if (letterChoice === this.tempWordGuessed[i]) {
-                            document.getElementById(i).innerHTML = letterChoice;
+                            document.getElementById(i).innerHTML = letterChoice + " ";
                             this.initialContent[i] = letterChoice;
                         }
                     }
