@@ -93,7 +93,6 @@
                         this.lettersGuessedSpan.appendChild(document.createTextNode(letterChoice + " "));
                         document.getElementById("letter-guessed").appendChild(this.lettersGuessedSpan);
                     }
-
                 }
                 if (this.initialContent.includes("_") === false) {
                     this.winAudio.play();
